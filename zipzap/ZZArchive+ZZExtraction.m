@@ -2,6 +2,7 @@
 // Created by vhbit on 3/6/13.
 //
 
+#import <zlib.h>
 #import "ZZArchive+ZZExtraction.h"
 #import "ZZArchiveEntry.h"
 #import "NSOutputStream+ZZExtraction.h"
@@ -82,7 +83,7 @@ NSString *const ZZInvalidDestinationsKey = @"ZZInvalidDestinations";
                                                           attributes:nil
                                                                error:nil];
 
-    return NO;
+    return isDir;
 }
 
 - (void)extractToPath:(NSString *)destinationPath
@@ -158,6 +159,8 @@ NSString *const ZZInvalidDestinationsKey = @"ZZInvalidDestinations";
         else
         {
             NSInputStream *inStream = entry.stream;
+            [inStream open];
+
             if ([[NSFileManager defaultManager] fileExistsAtPath:destinationPath] && (hasOverwriteHandler && ![delegate archive:self shouldOverwriteFile:entry.fileName]))
             {
                 // TODO: combine to error log
@@ -165,6 +168,8 @@ NSString *const ZZInvalidDestinationsKey = @"ZZInvalidDestinations";
             else
             {
                 NSOutputStream *outStream = [NSOutputStream outputStreamToFileAtPath:outPath append:NO];
+                [outStream open];
+
                 if (!hasIntegrityChecker || ![delegate archive:self shouldCheckFileIntegrity:entry.fileName])
                     [outStream ZZ_copyFromStream:inStream bufferSize:1024*128];
                 else
@@ -180,6 +185,9 @@ NSString *const ZZInvalidDestinationsKey = @"ZZInvalidDestinations";
                     if (crc32Digest != entry.crc32 && hasCorruptionHandler)
                         [delegate archive:self gotCorruptedFile:entry.fileName];
                 }
+
+                if (outStream.streamStatus != NSStreamStatusClosed)
+                    [outStream close];
             }
             [inStream close];
         }
