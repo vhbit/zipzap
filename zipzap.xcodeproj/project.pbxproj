@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6AF993019482F9C9698E7388 /* NSOutputStream+ZZExtraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF996BAF09CE6508B2CC6A7 /* NSOutputStream+ZZExtraction.m */; };
+		6AF997CD3B940F3DADDE4B85 /* NSOutputStream+ZZExtraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF996BAF09CE6508B2CC6A7 /* NSOutputStream+ZZExtraction.m */; };
+		6AF998A9C5B6020002F14BC7 /* ZZArchive+ZZExtraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF99F7C3ADEA578E4FCDBF1 /* ZZArchive+ZZExtraction.m */; };
+		6AF998C61403BB2AFF6783E5 /* NSOutputStream+ZZExtraction.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6AF991F4B2777A5DAED40F0D /* NSOutputStream+ZZExtraction.h */; };
+		6AF9993ED9195D297A3D5675 /* ZZArchive+ZZExtraction.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AF998A82D048B2E4165F1CC /* ZZArchive+ZZExtraction.h */; };
+		6AF99A32D8F26B9E598BEF4D /* ZZArchive+ZZExtraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF99F7C3ADEA578E4FCDBF1 /* ZZArchive+ZZExtraction.m */; };
+		6AF99C38590D7AB64E6992CE /* ZZExtractionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF99BC8A274CAFEABCC54B8 /* ZZExtractionTests.m */; };
+		6AF99D6604270F8603FCA7CF /* ZZArchive+ZZExtraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF99F7C3ADEA578E4FCDBF1 /* ZZArchive+ZZExtraction.m */; };
+		6AF99E358ADE79006B7F60A5 /* ZZArchive+ZZExtraction.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6AF998A82D048B2E4165F1CC /* ZZArchive+ZZExtraction.h */; };
+		6AF99E5644E41A62649F645D /* NSOutputStream+ZZExtraction.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AF991F4B2777A5DAED40F0D /* NSOutputStream+ZZExtraction.h */; };
 		D810EBCF164B19DA00200834 /* 拉链.txt in Resources */ = {isa = PBXBuildFile; fileRef = D810EBCE164B19DA00200834 /* 拉链.txt */; };
 		D8366ACE16B1F8B400BC012E /* ZZError.h in Headers */ = {isa = PBXBuildFile; fileRef = D8366ACC16B1F8B400BC012E /* ZZError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D8366ACF16B1F8B400BC012E /* ZZError.m in Sources */ = {isa = PBXBuildFile; fileRef = D8366ACD16B1F8B400BC012E /* ZZError.m */; };
@@ -97,12 +107,20 @@
 				D8B0FD661640A77F00727A70 /* zipzap.h in CopyFiles */,
 				D8B0FD671640A77F00727A70 /* ZZArchive.h in CopyFiles */,
 				D8B0FD681640A77F00727A70 /* ZZArchiveEntry.h in CopyFiles */,
+				6AF99E358ADE79006B7F60A5 /* ZZArchive+ZZExtraction.h in CopyFiles */,
+				6AF998C61403BB2AFF6783E5 /* NSOutputStream+ZZExtraction.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6AF991F4B2777A5DAED40F0D /* NSOutputStream+ZZExtraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOutputStream+ZZExtraction.h"; sourceTree = "<group>"; };
+		6AF9948A3A40CD1D51057C76 /* ZZExtractionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZExtractionTests.h; sourceTree = "<group>"; };
+		6AF996BAF09CE6508B2CC6A7 /* NSOutputStream+ZZExtraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOutputStream+ZZExtraction.m"; sourceTree = "<group>"; };
+		6AF998A82D048B2E4165F1CC /* ZZArchive+ZZExtraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZZArchive+ZZExtraction.h"; sourceTree = "<group>"; };
+		6AF99BC8A274CAFEABCC54B8 /* ZZExtractionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZExtractionTests.m; sourceTree = "<group>"; };
+		6AF99F7C3ADEA578E4FCDBF1 /* ZZArchive+ZZExtraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZZArchive+ZZExtraction.m"; sourceTree = "<group>"; };
 		D810EBCE164B19DA00200834 /* 拉链.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "拉链.txt"; sourceTree = "<group>"; };
 		D8366ACC16B1F8B400BC012E /* ZZError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZError.h; sourceTree = "<group>"; };
 		D8366ACD16B1F8B400BC012E /* ZZError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZError.m; sourceTree = "<group>"; };
@@ -204,6 +222,10 @@
 				D899CFD9162C608300112F49 /* ZZArchiveEntry.m */,
 				D8366ACC16B1F8B400BC012E /* ZZError.h */,
 				D8366ACD16B1F8B400BC012E /* ZZError.m */,
+				6AF99F7C3ADEA578E4FCDBF1 /* ZZArchive+ZZExtraction.m */,
+				6AF998A82D048B2E4165F1CC /* ZZArchive+ZZExtraction.h */,
+				6AF996BAF09CE6508B2CC6A7 /* NSOutputStream+ZZExtraction.m */,
+				6AF991F4B2777A5DAED40F0D /* NSOutputStream+ZZExtraction.h */,
 			);
 			name = Public;
 			sourceTree = "<group>";
@@ -306,6 +328,8 @@
 				D899D01F162F6C9700112F49 /* ZZZipTests.h */,
 				D899D020162F6C9700112F49 /* ZZZipTests.m */,
 				D899CF9E162C5EC100112F49 /* Supporting Files */,
+				6AF9948A3A40CD1D51057C76 /* ZZExtractionTests.h */,
+				6AF99BC8A274CAFEABCC54B8 /* ZZExtractionTests.m */,
 			);
 			path = zipzapTests;
 			sourceTree = "<group>";
@@ -351,6 +375,8 @@
 				D84A44AA16A0E30C00CF00A9 /* ZZFileChannelOutput.h in Headers */,
 				D84A44AF16A0E8D600CF00A9 /* ZZDataChannel.h in Headers */,
 				D84A44CF16A0F8B400CF00A9 /* ZZDataChannelOutput.h in Headers */,
+				6AF9993ED9195D297A3D5675 /* ZZArchive+ZZExtraction.h in Headers */,
+				6AF99E5644E41A62649F645D /* NSOutputStream+ZZExtraction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +515,8 @@
 				D84A44B016A0E8D600CF00A9 /* ZZDataChannel.m in Sources */,
 				D84A44D016A0F8B400CF00A9 /* ZZDataChannelOutput.m in Sources */,
 				D8366ACF16B1F8B400BC012E /* ZZError.m in Sources */,
+				6AF998A9C5B6020002F14BC7 /* ZZArchive+ZZExtraction.m in Sources */,
+				6AF997CD3B940F3DADDE4B85 /* NSOutputStream+ZZExtraction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +527,8 @@
 				D899D01A162CCF9700112F49 /* ZZUnzipTests.m in Sources */,
 				D899D021162F6C9700112F49 /* ZZZipTests.m in Sources */,
 				D899D0241631888100112F49 /* ZZTasks.m in Sources */,
+				6AF99C38590D7AB64E6992CE /* ZZExtractionTests.m in Sources */,
+				6AF99A32D8F26B9E598BEF4D /* ZZArchive+ZZExtraction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,6 +550,8 @@
 				D84A44B116A0E8D600CF00A9 /* ZZDataChannel.m in Sources */,
 				D84A44D116A0F8B400CF00A9 /* ZZDataChannelOutput.m in Sources */,
 				D8366AD016B1F8B400BC012E /* ZZError.m in Sources */,
+				6AF99D6604270F8603FCA7CF /* ZZArchive+ZZExtraction.m in Sources */,
+				6AF993019482F9C9698E7388 /* NSOutputStream+ZZExtraction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
