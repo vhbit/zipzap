@@ -149,47 +149,58 @@ NSString *const ZZInvalidDestinationsKey = @"ZZInvalidDestinations";
     for (ZZArchiveEntry *entry in self.entries)
     {
         NSString *outPath = hasRenamer ? [delegate archive:self renameFile:entry.fileName] : [destinationPath stringByAppendingPathComponent:entry.fileName];
-        NSString *outDir = [outPath stringByDeletingLastPathComponent];
-
-        if (![[self class] ensureDirExists:outDir])
+        if (entry.fileMode & S_IFDIR)
         {
-            if (hasInvalidPathHandler)
-                [delegate archive:self gotInvalidDestinationPath:outDir];
+            if (![[self class] ensureDirExists:outPath])
+            {
+                if (hasInvalidPathHandler)
+                    [delegate archive:self gotInvalidDestinationPath:outPath];
+            }
         }
         else
         {
-            NSInputStream *inStream = entry.stream;
-            [inStream open];
+            NSString *outDir = [outPath stringByDeletingLastPathComponent];
 
-            if ([[NSFileManager defaultManager] fileExistsAtPath:destinationPath] && (hasOverwriteHandler && ![delegate archive:self shouldOverwriteFile:entry.fileName]))
+            if (![[self class] ensureDirExists:outDir])
             {
-                // TODO: combine to error log
+                if (hasInvalidPathHandler)
+                    [delegate archive:self gotInvalidDestinationPath:outDir];
             }
             else
             {
-                NSOutputStream *outStream = [NSOutputStream outputStreamToFileAtPath:outPath append:NO];
-                [outStream open];
+                NSInputStream *inStream = entry.stream;
+                [inStream open];
 
-                if (!hasIntegrityChecker || ![delegate archive:self shouldCheckFileIntegrity:entry.fileName])
-                    [outStream ZZ_copyFromStream:inStream bufferSize:1024*128];
+                if ([[NSFileManager defaultManager] fileExistsAtPath:destinationPath] && (hasOverwriteHandler && ![delegate archive:self shouldOverwriteFile:entry.fileName]))
+                {
+                    // TODO: combine to error log
+                }
                 else
                 {
-                    uLong __block crc32Digest = crc32(0L, Z_NULL, 0);
-                    [outStream ZZ_copyFromStream:inStream
-                                      bufferSize:1024 * 128
-                                   dataProcessor:^(uint8_t *buffer, NSUInteger length) {
-                                       crc32Digest = crc32(crc32Digest, buffer, (uint)length);
-                                   }];
-                    [outStream close];
+                    NSOutputStream *outStream = [NSOutputStream outputStreamToFileAtPath:outPath append:NO];
+                    [outStream open];
 
-                    if (crc32Digest != entry.crc32 && hasCorruptionHandler)
-                        [delegate archive:self gotCorruptedFile:entry.fileName];
+                    if (!hasIntegrityChecker || ![delegate archive:self shouldCheckFileIntegrity:entry.fileName])
+                        [outStream ZZ_copyFromStream:inStream bufferSize:1024*128];
+                    else
+                    {
+                        uLong __block crc32Digest = crc32(0L, Z_NULL, 0);
+                        [outStream ZZ_copyFromStream:inStream
+                                          bufferSize:1024 * 128
+                                       dataProcessor:^(uint8_t *buffer, NSUInteger length) {
+                                           crc32Digest = crc32(crc32Digest, buffer, (uint)length);
+                                       }];
+                        [outStream close];
+
+                        if (crc32Digest != entry.crc32 && hasCorruptionHandler)
+                            [delegate archive:self gotCorruptedFile:entry.fileName];
+                    }
+
+                    if (outStream.streamStatus != NSStreamStatusClosed)
+                        [outStream close];
                 }
-
-                if (outStream.streamStatus != NSStreamStatusClosed)
-                    [outStream close];
+                [inStream close];
             }
-            [inStream close];
         }
     }
 }
